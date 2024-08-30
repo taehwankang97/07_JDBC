@@ -30,38 +30,35 @@
   </c:if>
   
   <%-- 로그인 상태인 경우 --%>
-  <c:if test="${not empty sessionScope.loginUser}" >
+	<c:if test="${not empty sessionScope.loginUser}">
 
-    <h1>${loginUser.userName}님이 접속하셨습니다</h1>
-    <ul>
-      <li>userNo     : ${loginUser.userNo}</li>
-      <li>userId     : ${loginUser.userId}</li>
-      <li>userName   : ${loginUser.userName}</li>
-      <li>enrollDate : ${loginUser.enrollDate}</li>
-    </ul>
+		<h1>${loginUser.userName}님이접속하셨습니다</h1>
+		<ul>
+			<li>userNo : ${loginUser.userNo}</li>
+			<li>userId : ${loginUser.userId}</li>
+			<li>userName : ${loginUser.userName}</li>
+			<li>enrollDate : ${loginUser.enrollDate}</li>
+		</ul>
 
-    <button id="logout">logout</button>
-    
-
-    <hr>
-
-<h3>메뉴</h3>
-    <ul>
-    <li><a href="/selectAll">사용자 목록 조회</a></li>
-    </ul>
-  </c:if>
+		<button id="logout">logout</button>
 
 
+		<hr>
+
+		<ul>
+		
+			<li><a href="/selectAll">사용자 목록 조회</a></li>
+		</ul>
+	</c:if>
 
 
 
-  <%-- session에 message가 존재하는 경우 --%>
+
   <c:if test="${!empty sessionScope.message}">
     <script>
       alert("${sessionScope.message}");
     </script>
 
-    <%-- session에 존재하는 message 제거 --%>
     <c:remove var="message" scope="session" />
   </c:if>
 <script src="/resources/js/main.js"></script>

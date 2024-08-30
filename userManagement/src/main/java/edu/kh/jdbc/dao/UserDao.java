@@ -13,17 +13,17 @@ public interface UserDao {
 	 * @return result
 	 * @throws Exception
 	 */
-	int insertUser(Connection conn, User user)throws Exception;
+	int insertUser(Connection conn, User user) throws Exception;
 
-	/**아이디 중복여부 확인
+	/** 아이디 중복 여부 확인
 	 * @param conn
 	 * @param userId
 	 * @return result
 	 * @throws Exception
 	 */
-	int idCheck(Connection conn, String userId)throws Exception;
+	int idCheck(Connection conn, String userId) throws Exception;
 
-	/**로그인
+	/** 로그인
 	 * @param conn
 	 * @param userId
 	 * @param userPw
@@ -32,9 +32,37 @@ public interface UserDao {
 	 */
 	User login(Connection conn, String userId, String userPw) throws Exception;
 
-	User sa(Connection conn, String userNo, String userId, String userPw, String userName, String enrollDate);
-
+	/** 사용자 목록 조회
+	 * @param conn
+	 * @return userList
+	 * @throws Exception
+	 */
 	List<User> selectAll(Connection conn) throws Exception;
+
+	
+	/** 검색어가 아이디에 포함된 사용자 조회
+	 * @param conn
+	 * @param searchId
+	 * @return userList
+	 * @throws Exception
+	 */
+	List<User> search(Connection conn, String searchId) throws Exception;
+
+	
+	/** userNo가 일치하는 사용자 조회
+	 * @param conn
+	 * @param userNo
+	 * @return
+	 * @throws Exception
+	 */
+	User selectUser(Connection conn, String userNo) throws Exception;
+
+	int deleteUser(Connection conn, int userNo) throws Exception;
+
+	int updateUser(Connection conn, User user) throws Exception;
+
+
+
 	
 	
 	

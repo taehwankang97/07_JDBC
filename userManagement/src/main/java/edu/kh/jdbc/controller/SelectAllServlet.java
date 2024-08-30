@@ -11,25 +11,28 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/selectAll")
-public class selectAllServlet extends HttpServlet{
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+public class SelectAllServlet extends HttpServlet{
 
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		try {
 			UserService service = new UserServiceImpl();
 			
-			List<User> userList =  service.selectAll();
+			List<User> userList = service.selectAll();
 			
-			HttpSession session = req.getSession(); 
-		} catch (Exception e) {
+			req.setAttribute("userList", userList);
+			
+			String path = "/WEB-INF/views/selectAll.jsp";
+			
+			req.getRequestDispatcher(path).forward(req, resp);
+			
+		}catch (Exception e) {
 			e.printStackTrace();
-		} 
-	}
-
+		}
 	
+	}
 	
 }
